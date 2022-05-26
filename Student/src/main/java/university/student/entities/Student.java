@@ -22,4 +22,9 @@ public class Student {
 	String email;
 
 	String department;
+
+	String username;
+	String password;
+	String role;
+	Boolean enabled;
 }

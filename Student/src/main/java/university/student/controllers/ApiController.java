@@ -10,12 +10,11 @@ import university.student.services.StudentService;
 import university.student.utilities.DetailedStudent;
 import university.student.utilities.Response;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class StudentController {
+public class ApiController {
 
 	@Autowired
 	StudentService studentService;
