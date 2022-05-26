@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "UTF-8">
+	<title>Student_API</title>
+	<link rel = "stylesheet" href = "/css/style.css">
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div>
+	<h3>View Student</h3>
+
+	<label for = "id">Enter Id</label>
+	<input type = "text" id = "id" placeholder = "Id" />
+	<button id = "send">View</button><br>
+
+	<button id = "readall">View ALL</button>
+</div>
+</body>
+
+<script>
+
+	$("#send").click(function () {
+		getData($("#id").val());
+	});
+
+	function getData(input) {
+		$.ajax({
+			url: "/student/api/read/?id=" + input,
+			// data: JSON.stringify({"id": parseInt(input)}),
+			cache: false,
+			type: 'get',
+			dataType: 'json',
+			contentType: "application/json",
+			success: function (data) {
+				console.log(data);
+				alert(data.message);
+			}
+		});
+	}
+
+	$("#readall").click(function () {
+		getAllData();
+	});
+
+
+	function getAllData() {
+		$.ajax({
+			url: "/student/api/readall",
+			cache: false,
+			type: 'get',
+			dataType: 'json',
+			contentType: "application/json",
+			success: function (data) {
+				console.log(data);
+				alert(data.message);
+			}
+		});
+	}
+</script>
+
+</html>

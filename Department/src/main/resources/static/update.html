@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "UTF-8">
+	<title>Student_API</title>
+	<link rel = "stylesheet" href = "/css/style.css">
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+<div>
+	<h3>Update Department</h3>
+
+	<label for = "id">Enter Id: </label>
+	<input type = "text" id = "id" placeholder = "Id" /><br>
+
+	<label for = "name">Enter name: </label>
+	<input type = "text" id = "name" placeholder = "name" /><br>
+
+	<label for = "city">Enter city: </label>
+	<input type = "text" id = "city" placeholder = "city" /><br>
+
+	<label for = "faculty">Enter faculty: </label>
+	<input type = "text" id = "faculty" placeholder = "faculty" /><br>
+
+	<button id = "send">Update</button>
+</div>
+</body>
+
+<script>
+
+	$("#send").click(function () {
+		getData($("#id").val(), $("#name").val(), $("#city").val(), $("#faculty").val());
+	});
+
+
+	function getData(id, name, city, faculty) {
+		$.ajax({
+			url: "/department/api/update",
+			data: JSON.stringify({"id": parseInt(id), "name": name, "city": city, "faculty": faculty}),
+			cache: false,
+			type: 'put',
+			dataType: 'json',
+			contentType: "application/json",
+			success: function (data) {
+				console.log(data);
+				alert(data.message);
+			}
+		});
+	}
+</script>
+
+</html>

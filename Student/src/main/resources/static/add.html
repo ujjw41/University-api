@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "UTF-8">
+	<title>Student_API</title>
+	<link rel = "stylesheet" href = "/css/style.css">
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div>
+	<h3>Add Student</h3>
+	<label for = "name">Enter name: </label>
+	<input type = "text" id = "name" placeholder = "name" /><br>
+
+	<label for = "email">Enter email: </label>
+	<input type = "text" id = "email" placeholder = "email" /><br>
+
+	<label for = "department">Department name: </label>
+	<input type = "text" id = "department" placeholder = "department" /><br>
+
+	<button id = "send">Save</button>
+
+</div>
+</body>
+
+<script>
+	$("#send").click(function () {
+		getData($("#name").val(), $("#email").val(), $("#department").val());
+	});
+
+	function getData(name, email, department) {
+		$.ajax({
+			url: "/student/api/add",
+			data: JSON.stringify({"name": name, "email": email, "department": department}),
+			cache: false,
+			type: 'post',
+			dataType: 'json',
+			contentType: "application/json",
+			success: function (data) {
+				console.log(data);
+				alert(data.message);
+				// window.location.href = "/";
+			}
+		});
+	}
+</script>
+</html>
