@@ -11,7 +11,7 @@
 <div>
 	<h3>Delete Student</h3>
 	<label for = "id">Enter ID: </label>
-	<input type = "text" id = "id" placeholder = "Id" />
+	<input type = "text" id = "id" aria-placeholder = "Id" />
 	<button id = "send">Delete</button>
 
 </div>
@@ -24,7 +24,7 @@
 
 	function getData(input) {
 		$.ajax({
-			url: "/student/api/delete",
+			url: "/student/delete",
 			data: JSON.stringify({"id": parseInt(input)}),
 			cache: false,
 			type: 'delete',

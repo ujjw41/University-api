@@ -24,7 +24,7 @@
 
 	function getData(input) {
 		$.ajax({
-			url: "/department/api/delete",
+			url: "/department/delete",
 			data: JSON.stringify({"id": parseInt(input)}),
 			cache: false,
 			type: 'delete',

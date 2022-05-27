@@ -6,7 +6,7 @@ import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.boot.actuate.endpoint.annotation.WriteOperation;
 import org.springframework.web.bind.annotation.*;
 import university.student.entities.Student;
-import university.student.services.StudentService;
+import university.student.services.ApiService;
 import university.student.utilities.DetailedStudent;
 import university.student.utilities.Response;
 
@@ -17,20 +17,20 @@ import java.util.Optional;
 public class ApiController {
 
 	@Autowired
-	StudentService studentService;
+	ApiService apiService;
 
 	@ResponseBody
 	@WriteOperation
-	@PostMapping("/student/api/add")
-	public Response add(@RequestBody Student student) {
-		studentService.save(student);
+	@PostMapping("/student/register")
+	public Response register(@RequestBody Student student) {
+		apiService.save(student);
 		return new Response("success", "thank you");
 	}
 
-	@GetMapping(value = {"/student/api/read/{id}"})
+	@GetMapping(value = {"/student/read/{id}"})
 	public DetailedStudent read(@PathVariable("id") Optional<Long> id) {
 
-		return studentService.get(id.get());
+		return apiService.get(id.get());
 
 	}
 
@@ -41,26 +41,26 @@ public class ApiController {
 //	}
 
 	@ReadOperation
-	@GetMapping("/student/api/readall")
+	@GetMapping("/student/readall")
 	public List<DetailedStudent> readAll() {
-		return studentService.getAll();
+		return apiService.getAll();
 	}
 
 	@ResponseBody
 	@DeleteOperation
-	@DeleteMapping("/student/api/delete")
+	@DeleteMapping("/student/delete")
 	public Response delete(@RequestBody Student student) {
-		studentService.delete(student);
+		apiService.delete(student);
 
 		return new Response("success", "DELETED");
 	}
 
 	@ResponseBody
 	@WriteOperation
-	@PutMapping("/student/api/update")
+	@PutMapping("/student/update")
 	public Response update(@RequestBody Student student) {
 
-		studentService.update(student);
+		apiService.update(student);
 
 		return new Response("success", "UPDATED");
 	}

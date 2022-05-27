@@ -1,4 +1,4 @@
-package university.student.utilities;
+package university.student.configs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -27,7 +27,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		http.csrf()
 				.disable()
 				.authorizeRequests()
-				.antMatchers("/", "/student/**")
+				.antMatchers("/", "/register", "/student/**", "/css/**")
 				.permitAll()
 				.anyRequest()
 				.authenticated()

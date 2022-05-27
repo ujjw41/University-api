@@ -14,19 +14,19 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class DepartmentController {
+public class ApiController {
 	@Autowired
 	DepartmentService departmentService;
 
 	@ResponseBody
 	@WriteOperation
-	@PostMapping("/department/api/add")
+	@PostMapping("/department/add")
 	public Response add(@RequestBody Department department) {
 		departmentService.save(department);
 		return new Response("success", "thank you");
 	}
 
-	@GetMapping(value = {"/department/api/read", "/department/api/read/{id}"})
+	@GetMapping(value = {"/department/read", "/department/read/{id}"})
 	public List<Department> read(@PathVariable("id") Optional<Long> id) {
 		if (id.isEmpty()) {
 			return departmentService.getAll();
@@ -38,14 +38,14 @@ public class DepartmentController {
 	}
 
 	@ReadOperation
-	@GetMapping("/department/api/readall")
+	@GetMapping("/department/readall")
 	public List<Department> readAll() {
 		return departmentService.getAll();
 	}
 
 	@ResponseBody
 	@DeleteOperation
-	@DeleteMapping("/department/api/delete")
+	@DeleteMapping("/department/delete")
 	public Response delete(@RequestBody Department department) {
 		departmentService.delete(department);
 
@@ -54,7 +54,7 @@ public class DepartmentController {
 
 	@ResponseBody
 	@WriteOperation
-	@PutMapping("/department/api/update")
+	@PutMapping("/department/update")
 	public Response update(@RequestBody Department department) {
 
 		departmentService.update(department);
@@ -62,7 +62,7 @@ public class DepartmentController {
 		return new Response("success", "UPDATED");
 	}
 
-	@GetMapping(value = {"/department/api/getname"})
+	@GetMapping(value = {"/department/getname"})
 	public Department get(@RequestParam("name") String name) {
 		return departmentService.getByName(name);
 	}

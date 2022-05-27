@@ -1,4 +1,4 @@
-package university.student.utilities;
+package university.student.configs;
 
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -16,15 +16,9 @@ public class DataSources {
 		dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
 		dataSourceBuilder.url("jdbc:mysql://localhost:3306/client");
 		dataSourceBuilder.username("root");
-		dataSourceBuilder.password("osho");
+		dataSourceBuilder.password("");
 
 		return dataSourceBuilder.build();
-
-//		spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-//
-//		spring.datasource.url=jdbc:mysql://localhost:3306/client
-//		spring.datasource.username=root
-//		spring.datasource.password=osho
 
 	}
 }

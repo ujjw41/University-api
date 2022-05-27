@@ -6,23 +6,18 @@
 	<link rel = "stylesheet" href = "/css/style.css">
 	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
 </head>
 <body>
 <div>
-	<h3>Update Student</h3>
-
-	<label for = "id">Enter Id: </label>
-	<input type = "text" id = "id" placeholder = "Id" /><br>
-
+	<h3>Add Student</h3>
 	<label for = "name">Enter name: </label>
-	<input type = "text" id = "name" placeholder = "name" /><br>
+	<input type = "text" id = "name" aria-placeholder = "name" /><br>
 
 	<label for = "email">Enter email: </label>
-	<input type = "text" id = "email" placeholder = "email" /><br>
+	<input type = "text" id = "email" aria-placeholder = "email" /><br>
 
-	<label for = "department">Department name</label>
-	<input type = "text" id = "department" placeholder = "department" /><br>
+	<label for = "department">Department name: </label>
+	<input type = "text" id = "department" aria-placeholder = "department" /><br>
 
 	<label for = "username">Enter username: </label>
 	<input type = "text" id = "username" aria-placeholder = "username" /><br>
@@ -30,32 +25,36 @@
 	<label for = "password">Enter password: </label>
 	<input type = "password" id = "password" aria-placeholder = "password" /><br>
 
+	<button id = "send">Save</button>
 
-	<button id = "send">Update</button>
 </div>
 </body>
 
 <script>
-
 	$("#send").click(function () {
-		getData($("#id").val(), $("#name").val(), $("#email").val(), $("#department").val());
+		getData($("#name").val(), $("#email").val(), $("#department").val(), $("#username").val(), $("#password").val());
 	});
 
-
-	function getData(id, name, email, department) {
+	function getData(name, email, department, username, password) {
 		$.ajax({
-			url: "/student/update",
-			data: JSON.stringify({"id": parseInt(id), "name": name, "email": email, "department": department}),
+			url: "/student/register",
+			data: JSON.stringify({
+				"name": name,
+				"email": email,
+				"department": department,
+				"username": username,
+				"password": password
+			}),
 			cache: false,
-			type: 'put',
+			type: 'post',
 			dataType: 'json',
 			contentType: "application/json",
 			success: function (data) {
 				console.log(data);
 				alert(data.message);
+				window.location.href = "/";
 			}
 		});
 	}
 </script>
-
 </html>

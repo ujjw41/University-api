@@ -3,12 +3,18 @@
 <head>
 	<meta charset = "UTF-8">
 	<title>Login</title>
+	<link rel = "stylesheet" href = "/css/style.css">
+
 </head>
 <body>
 <div>
+	<h3>Login</h3><br>
 	<form action = "/login" method = "post">
-		<input name = "username" type = "text">
-		<input name = "password" type = "password">
+		<label for = "username">username: </label>
+		<input id = "username" name = "username" type = "text" aria-placeholder = "username"><br>
+
+		<label for = "password">password: </label>
+		<input id = "password" name = "password" type = "password" aria-placeholder = "password"><br>
 		<button type = "submit">Login</button>
 	</form>
 </div>

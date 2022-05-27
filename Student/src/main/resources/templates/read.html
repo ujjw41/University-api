@@ -12,7 +12,7 @@
 	<h3>View Student</h3>
 
 	<label for = "id">Enter Id</label>
-	<input type = "text" id = "id" placeholder = "Id" />
+	<input type = "text" id = "id" aria-placeholder = "Id" />
 	<button id = "send">View</button><br>
 
 	<button id = "readall">View ALL</button>
@@ -27,8 +27,8 @@
 
 	function getData(input) {
 		$.ajax({
-			url: "/student/api/read/?id=" + input,
-			// data: JSON.stringify({"id": parseInt(input)}),
+			url: "/student/read/" + input,
+			data: JSON.stringify({"id": parseInt(input)}),
 			cache: false,
 			type: 'get',
 			dataType: 'json',

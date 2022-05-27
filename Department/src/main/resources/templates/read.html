@@ -27,7 +27,7 @@
 
 	function getData(input) {
 		$.ajax({
-			url: "/department/api/read/?id=" + input,
+			url: "/department/read/" + input,
 			// data: JSON.stringify({"id": parseInt(input)}),
 			cache: false,
 			type: 'get',
@@ -47,7 +47,7 @@
 
 	function getAllData() {
 		$.ajax({
-			url: "/department/api/readall",
+			url: "/department/readall",
 			cache: false,
 			type: 'get',
 			dataType: 'json',
