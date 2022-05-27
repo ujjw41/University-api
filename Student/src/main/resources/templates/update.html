@@ -38,14 +38,21 @@
 <script>
 
 	$("#send").click(function () {
-		getData($("#id").val(), $("#name").val(), $("#email").val(), $("#department").val());
+		getData($("#id").val(), $("#name").val(), $("#email").val(), $("#department").val(), $("#username").val(), $("#password").val());
 	});
 
 
-	function getData(id, name, email, department) {
+	function getData(id, name, email, department, username, password) {
 		$.ajax({
 			url: "/student/update",
-			data: JSON.stringify({"id": parseInt(id), "name": name, "email": email, "department": department}),
+			data: JSON.stringify({
+				"id": parseInt(id),
+				"name": name,
+				"email": email,
+				"department": department,
+				"username": username,
+				"password": password
+			}),
 			cache: false,
 			type: 'put',
 			dataType: 'json',
