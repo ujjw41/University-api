@@ -50,7 +50,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 //	}
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-		authenticationManagerBuilder.jdbcAuthentication().dataSource(dataSource)
+		authenticationManagerBuilder.jdbcAuthentication()
+				.passwordEncoder(new BCryptPasswordEncoder())
+				.dataSource(dataSource)
 				.usersByUsernameQuery("SELECT username, password, enabled FROM student where username=?")
 				.authoritiesByUsernameQuery("SELECT username, role FROM student where username=?");
 	}
