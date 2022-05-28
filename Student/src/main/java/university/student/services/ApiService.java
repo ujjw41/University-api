@@ -26,7 +26,7 @@ public class ApiService {
 	RestTemplate restTemplate;
 
 	public void save(Student student) {
-		studentRepo.save(student);
+//		studentRepo.save(student);
 
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		student.setPassword(bCryptPasswordEncoder.encode(student.getPassword()));
@@ -83,7 +83,6 @@ public class ApiService {
 			detailedStudent.setEnabled(student.getEnabled());
 
 			detailedStudent.setDepartment(department);
-
 			detailedStudentList.add(detailedStudent);
 		});
 
